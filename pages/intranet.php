@@ -8,7 +8,7 @@ $listaUsuario   =   $Exibe->listaUsuario();
 ?>
 <script>
     $(document).ready(function() {
-    $('#example').DataTable();
+    $('#usuarios').DataTable();
 } );
 </script>
 <div class="row">
@@ -31,7 +31,7 @@ $listaUsuario   =   $Exibe->listaUsuario();
     </form>
    </div>
    <div class="col-md-6">
-        <table id="example" class="display" style="width:100%">
+        <table id="usuarios" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th>Nome do Usuario</th>

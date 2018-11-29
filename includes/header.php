@@ -23,6 +23,10 @@
 	<script src="assets/js/jquery.mask.min.js"></script>
 	<!-- MASCARAS -->
 	<script src="assets/js/mascaras.js"></script>
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="assets/fontawesome/css/all.css" >
+    <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.css">
+    
 </head>
 <body>
   

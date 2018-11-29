@@ -2,6 +2,8 @@
 
 body{
     padding-top: 3.5rem;
+    background-image: url("../../img/connectwork.png");
+    color:white;
 }
 
 h1{
@@ -35,4 +37,8 @@ h1{
 
 #excluiAcesso{
     color:red;
+}
+
+#firstDiv{
+    padding-top: 20px;
 }

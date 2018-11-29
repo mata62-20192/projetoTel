@@ -13,7 +13,7 @@ if($situacao){
     $page   =   "..\?page=intranet";
     $_SESSION['id'] = $situacao;
 }else{
-    $msg    =   "E-mail ou senha inválida!";
+    $msg    =   "Acesso negado! Gentileza entrar em contato com o suporte!";
     $page   =   "..\?page=index";
 }
 

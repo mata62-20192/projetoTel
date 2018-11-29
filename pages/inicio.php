@@ -1,3 +1,6 @@
+<?php
+session_destroy();
+?>
 <div class="row">
    <div class="col-md-12">
     <form action="config/login.php" method="post">

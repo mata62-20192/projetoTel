@@ -1,12 +1,12 @@
 <?php
-include("../includes/conexao.php");
+
 class Verifica {
 
     private $conexao;
 
     #### Construtor:
     public function __construct(){
-        $this->conexao    = new mysqli(_SERV,_USR,_PW,_BD) or die("Erro de conexão com o Banco de dados");
+        $this->conexao    = new mysqli("127.0.0.1","root","","") or die("Erro de conexão com o Banco de dados");
         $this->conexao->set_charset("utf8");
     }
 

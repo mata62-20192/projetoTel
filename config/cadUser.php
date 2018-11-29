@@ -1,5 +1,5 @@
 <?php
-include("../classes/Cadastro.php");
+include("../classes/Usuario.php");
 $cadastro = new Usuario();
 
 $nome   = FILTER_INPUT(INPUT_POST,'nomeCompleto');

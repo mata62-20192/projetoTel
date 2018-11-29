@@ -1,4 +1,7 @@
 <?php
+if(!$_SESSION['id']){
+    header("Location: ?page=index");
+}
 $usuario    =   $Exibe->dadosUsuario($_SESSION['id']);
 $listaUsuario   =   $Exibe->listaUsuario();
 
@@ -24,7 +27,7 @@ $listaUsuario   =   $Exibe->listaUsuario();
             <input type="password" name="senha" class="form-control" plceholder="Digite aqui sua senha">
             <input type="hidden" name="id" value="<?=$_SESSION['id']?>">
         </div>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
     </form>
    </div>
    <div class="col-md-6">
@@ -38,8 +41,11 @@ $listaUsuario   =   $Exibe->listaUsuario();
                 </tr>
             </thead>
             <tbody>
-                <?php for($i=0;$i<count($listaUsuario['nome']);$i++){ ?>
-                    <tr>
+                <?php 
+                    for($i=0;$i<count($listaUsuario['nome']);$i++){ 
+                        if($listaUsuario['status'][$i] == 0){$color="red";}else{$color=NULL;}
+                ?>
+                    <tr style="color:<?=$color;?>">
                         <td><?=$listaUsuario['nome'][$i];?></td>
                         <td><?=$listaUsuario['email'][$i];?></td>
                         <td>

@@ -34,15 +34,19 @@ class Usuario {
         
     //Atualiza os dados do usuário:
     public function updateUser($id,$nome,$email,$senha=NULL){
-        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ? WHERE id = ?");
-        $sql->bind_param('ssd',$nome,$email,$id);
-        $sql->execute();
-        $sql->close();
+        if($senha){
+            $this->updateUserSenha($id,$nome,$email,$senha);
+        }else{
+            $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ? WHERE id = ?");
+            $sql->bind_param('ssd',$nome,$email,$id);
+            $sql->execute();
+            $sql->close();
+        }
         return 1;
     }
      //Atualiza os dados do usuário:
      public function updateUserSenha($id,$nome,$email,$senha){
-        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ?, senha = sha1($senha); WHERE id = ?");
+        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ?, senha = sha1($senha) WHERE id = ?");
         $sql->bind_param('ssd',$nome,$email,$id);
         $sql->execute();
         $sql->close();
@@ -50,7 +54,13 @@ class Usuario {
     }
 
     //Exclusão de Acesso
-
+    public function excluirAcesso($id){
+        
+        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET ativo = 0 WHERE id = ?");
+        $sql->bind_param('d',$id);
+        $sql->execute();
+        $sql->close();
+    }
 
 }
 

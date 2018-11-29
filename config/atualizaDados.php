@@ -1,17 +1,14 @@
 <?php
 include("../includes/conexao.php");
-include("../classes/Cadastro.php");
+include("../classes/Usuario.php");
 $cadastro = new Usuario();
 
 $nome   = FILTER_INPUT(INPUT_POST,'nomeCompleto');
 $email  = FILTER_INPUT(INPUT_POST,'email');
 $senha  = FILTER_INPUT(INPUT_POST,'senha');
 $id     = FILTER_INPUT(INPUT_POST,'id');
-if($senha){
-    $status = $cadastro->updateUserSenha($id,$nome,$email,$senha);
-}else{
-    $status = $cadastro->updateUser($id,$nome,$email);
-}
+
+$status = $cadastro->updateUser($id,$nome,$email,$senha);
 if($status == 1){
     $msg    =   "Dados atualizados!";
 }else{

@@ -1,12 +1,12 @@
 <?php
 
-class Cadastro {
+class Usuario {
 
     private $conexao;
 
     #### Construtor:
     public function __construct(){
-        $this->conexao    = new mysqli("127.0.0.1","root","","") or die("Erro de conexão com o Banco de dados");
+        $this->conexao    = new mysqli(_SERV,_USR,_PW,_BD) or die("Erro de conexão com o Banco de dados");
         $this->conexao->set_charset("utf8");
     }
 
@@ -34,22 +34,22 @@ class Cadastro {
         
     //Atualiza os dados do usuário:
     public function updateUser($id,$nome,$email,$senha=NULL){
-        if($senha){
-            $query = ",senha = $senha";
-        }else{
-            $query = null;
-        }
-        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = $nome, email = $email $query
-        WHERE id = $id");
-        if($sql->execute()){
-            return 1;
-        }else{
-            return 0;
-        }
+        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ? WHERE id = ?");
+        $sql->bind_param('ssd',$nome,$email,$id);
+        $sql->execute();
         $sql->close();
+        return 1;
     }
-    
+     //Atualiza os dados do usuário:
+     public function updateUserSenha($id,$nome,$email,$senha){
+        $sql = $this->conexao->prepare("UPDATE projeto.usuario SET nome = ?, email = ?, senha = sha1($senha); WHERE id = ?");
+        $sql->bind_param('ssd',$nome,$email,$id);
+        $sql->execute();
+        $sql->close();
+        return 1;
+    }
 
+    //Exclusão de Acesso
 
 
 }

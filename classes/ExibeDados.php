@@ -6,7 +6,7 @@ class Exibe {
 
     #### Construtor:
     public function __construct(){
-        $this->conexao    = new mysqli("127.0.0.1","root","","") or die("Erro de conexão com o Banco de dados");
+        $this->conexao    = new mysqli(_SERV,_USR,_PW,_BD) or die("Erro de conexão com o Banco de dados");
         $this->conexao->set_charset("utf8");
     }
 
@@ -24,5 +24,19 @@ class Exibe {
         return $dados;
     }
 
+    public function listaUsuario(){
+        $sql    =   $this->conexao->prepare("SELECT id,nome, email, ativo FROM projeto.usuario");
+        $sql->execute();
+        $sql->bind_result($id_,$nome_,$email_,$ativo_);
+        while($sql->fetch()){
+            $dados['id'][]          =   $id_;
+            $dados['nome'][]        =   $nome_;
+            $dados['email'][]       =   $email_;
+            $dados['status'][]      =   $ativo_;
+        }
+        $sql->close();
+
+        return $dados;        
+    }
 }
 ?>

@@ -1,10 +1,15 @@
 <?php
 $usuario    =   $Exibe->dadosUsuario($_SESSION['id']);
-
+$listaUsuario   =   $Exibe->listaUsuario();
 
 ?>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 <div class="row">
-   <div class="col-md-12">
+   <div class="col-md-6">
     <form action="config/atualizaDados.php" method="post">
         <div class="form-group">
             <label for="nomeCompleto">Nome Completo:</label>
@@ -21,5 +26,30 @@ $usuario    =   $Exibe->dadosUsuario($_SESSION['id']);
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
+   </div>
+   <div class="col-md-6">
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Nome do Usuario</th>
+                    <th>E-mail</th>
+                    <th>Excluir</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <?php for($i=0;$i<count($listaUsuario['nome']);$i++){ ?>
+                    <tr>
+                        <td><?=$listaUsuario['nome'][$i];?></td>
+                        <td><?=$listaUsuario['email'][$i];?></td>
+                        <td>
+                            <a href="config/excluirUsuario.php?id=<?=$listaUsuario['id'][$i];?>">
+                                <span id="excluiAcesso" aria-hidden="true">&times;</span>
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
    </div>
 </div>

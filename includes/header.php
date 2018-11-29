@@ -8,12 +8,14 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+
     <!--Bootstrap  CSS & JS-->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script src="assets/js/bootstrap.js"></script>
 
     <!-- Data Tables -->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 </head>
 <body>

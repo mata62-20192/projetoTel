@@ -1,7 +1,7 @@
 <?php
 //Inicia Sessão:
 session_start();
-
+include("includes/conexao.php");
 include("classes/ExibeDados.php");
 $Exibe = new Exibe();
 

@@ -1,6 +1,6 @@
 <?php
 include("../classes/Cadastro.php");
-$cadastro = new Cadastro();
+$cadastro = new Usuario();
 
 $nome   = FILTER_INPUT(INPUT_POST,'nomeCompleto');
 $email  = FILTER_INPUT(INPUT_POST,'email');
